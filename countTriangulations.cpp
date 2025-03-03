@@ -19,16 +19,6 @@ void printDiagonal(int a, int b, int offset) {
     printf("(%d, %d), ", a + offset, b + offset);
 }
 
-// void listTriangulations(int numEdges, int offset) {
-//     if (numEdges <= 3) return;
-    
-//     for (int i = 1; i < numEdges - 1; i++) {
-//         listTriangulations(i+1, offset);
-//         printDiagonal()
-//         listTriangulations(numEdges-i, i + offset);
-//     }
-// }
-
 vector<vector<pair<int, int> > > listTriangulations(int numEdges, int offset) {
     vector<vector<pair<int, int> > > list;
     for (int n = 1; n < numEdges - 1; n++) {
