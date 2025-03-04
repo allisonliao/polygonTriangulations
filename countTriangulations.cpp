@@ -41,6 +41,8 @@ vector<vector<pair<int, int> > > listTriangulations(int numEdges, int offset) {
 }
 
 int main() {
+    clock_t start, end;
+
     printf("Recursively count triangulations without enumeration.\n");
     for (int i = 3; i <= 20; i++) {
         printf("i = %d: %d\n",i, countTriangulations(i));
@@ -56,10 +58,15 @@ int main() {
             printf("\n");
         }
     }
-
+    
     printf("Enumerate polygons without printing.\n");
+    start = clock();
     for (int i = 3; i <= 20; i++) {
-        printf("i = %d: %lu\n",i, listTriangulations(i, 0).size());
+        long size = listTriangulations(i, 0).size();
+        end = clock();
+        double elapsed = double (end-start) / double(CLOCKS_PER_SEC);
+        printf("i = %d: %lu\t\ttime taken: %lf\n",i, size, elapsed);
+        start = clock();
     }
     return 1;
 }
