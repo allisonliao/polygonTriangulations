@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
@@ -40,6 +41,31 @@ vector<vector<pair<int, int> > > listTriangulations(int numEdges, int offset) {
     return list;
 }
 
+// copy of method but printing without storing
+void printTriangulations(int numEdges, int offset, vector<pair<int, int>> diagonals = {}) {
+    if (numEdges < 3) return;  // base case: no triangulation possible for a triangle or smaller.
+
+    for (int n = 1; n < numEdges - 1; n++) {
+        vector<pair<int, int>> leftDiagonals = diagonals;
+        
+        // add diagonals forming the current split
+        if (n > 1) leftDiagonals.push_back(make_pair(offset, n + offset));
+        if (n < numEdges - 2) leftDiagonals.push_back(make_pair(n + offset, numEdges - 1 + offset));
+
+        // Recursively print triangulations for left and right subpolygons
+        printTriangulations(n + 1, offset, leftDiagonals);
+        printTriangulations(numEdges - n, n + offset, leftDiagonals);
+
+        // If we've reached a full triangulation, print it
+        if (numEdges - n == 2 || n + 1 == 2) {
+            for (auto& d : leftDiagonals) {
+                cout << "(" << d.first << ", " << d.second << ") ";
+            }
+            cout << endl;
+        }
+    }
+}
+
 int main() {
     clock_t start, end;
 
@@ -66,6 +92,17 @@ int main() {
         end = clock();
         double elapsed = double (end-start) / double(CLOCKS_PER_SEC);
         printf("i = %d: %lu\t\ttime taken: %lf\n",i, size, elapsed);
+        start = clock();
+    }
+
+    printf("Enumerate polygons with printing.\n");
+    start = clock();
+    for (int i = 20; i <= 20; i++) {
+        printf("----------------------%d----------------------\n",i);
+        printTriangulations(i, 0);
+        end = clock();
+        double elapsed = double (end-start) / double(CLOCKS_PER_SEC);
+        printf("i = %d: \t\ttime taken: %lf\n",i, elapsed);
         start = clock();
     }
     return 1;
