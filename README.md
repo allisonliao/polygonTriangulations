@@ -37,3 +37,5 @@ Rough measurement of time taken (rounded to 2 decimals):
 | $17$            | $1$ m $11.22$ s |
 | $18$            | $4$ m $22.67$ s |
 | $19$            | $15$ m $58.54$ s |
+
+This measurement was taken using the least efficient method (enumeration while storing in 2D Vector data structure). The code was tested using the most efficient method (printing without storing), but as it did not give a better end result (was not able to run higher than 19-sided polygon), I did not record those times.

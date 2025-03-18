@@ -95,15 +95,15 @@ int main() {
         start = clock();
     }
 
-    printf("Enumerate polygons with printing.\n");
-    start = clock();
-    for (int i = 20; i <= 20; i++) {
-        printf("----------------------%d----------------------\n",i);
-        printTriangulations(i, 0);
-        end = clock();
-        double elapsed = double (end-start) / double(CLOCKS_PER_SEC);
-        printf("i = %d: \t\ttime taken: %lf\n",i, elapsed);
-        start = clock();
-    }
+    // printf("Enumerate polygons with printing.\n");
+    // start = clock();
+    // for (int i = 20; i <= 20; i++) {
+    //     printf("----------------------%d----------------------\n",i);
+    //     printTriangulations(i, 0);
+    //     end = clock();
+    //     double elapsed = double (end-start) / double(CLOCKS_PER_SEC);
+    //     printf("i = %d: \t\ttime taken: %lf\n",i, elapsed);
+    //     start = clock();
+    // }
     return 1;
 }
